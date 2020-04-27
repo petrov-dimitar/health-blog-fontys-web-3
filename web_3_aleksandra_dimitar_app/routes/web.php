@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/test', function () {
     return view('test');
 });
 
 Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::get('/', function () {
+    return view('landingPage');
+});
+
+Route::get('/child', function () {
+    return view('child');
 });
