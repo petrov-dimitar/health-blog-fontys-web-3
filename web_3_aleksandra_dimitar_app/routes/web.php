@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/test', function () {
-    return view('test');
+Route::get('/shop', function () {
+    return view('shop');
 });
 
 Route::get('/welcome', function () {
@@ -25,4 +25,8 @@ Route::get('/', function () {
 
 Route::get('/child', function () {
     return view('child');
+});
+
+Route::get('/recipes', function () {
+    return view('recipes');
 });
