@@ -28,5 +28,13 @@ Route::get('/child', function () {
 });
 
 Route::get('/recipes', function () {
-    return view('recipes');
+    return view('recipes', [
+        'recipes' => App\Recipe::latest()->get()
+    ]);
+});
+
+Route::get('/recipes/{id}', function ($id) {
+    return view('recipeInfo', [
+        'recipe' => App\Recipe::find($id)
+    ]);
 });
