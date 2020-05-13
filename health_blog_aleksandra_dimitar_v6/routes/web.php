@@ -11,10 +11,22 @@
 |
 */
 
-Route::get('/', 'HomeController@GetHomePage');
+//Route::get('/', 'HomeController@GetHomePage');
 
 //in the recipes page, we use the already created RecipeController and the method index to show all recipes
 Route::get('/recipes', 'RecipeController@index');
 
 //{} those shows that the specific value is an input and should be past to the controller
 Route::get('/recipes/{id}', 'RecipeController@show');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')
+->name('home')
+->middleware('auth');
+
+Route::get('/home', 'HomeController@index')
+->name('home')
+->middleware('auth');
+
+
