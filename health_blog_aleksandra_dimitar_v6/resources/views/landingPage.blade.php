@@ -22,7 +22,16 @@
 
 
 @section('content')
-    <p>This is my body content.</p>
+    <p>This is the current user:</p>
+{{-- <p>{{auth()->user()}}</p> --}}
+
+
+    <p> Id: {{auth()->user()->id}}</p>
+    <p>Email: {{auth()->user()->email}}</p>
+    <p>Name: {{auth()->user()-> name}}</p>
+    <p>Created at: {{auth()->user()->created_at}}</p>
+
+
 @endsection
 </body>
 </html>
