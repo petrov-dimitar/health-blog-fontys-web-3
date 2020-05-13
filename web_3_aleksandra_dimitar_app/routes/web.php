@@ -11,30 +11,10 @@
 |
 */
 
-Route::get('/shop', function () {
-    return view('shop');
-});
+Route::get('/', 'HomeController@GetHomePage');
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+//in the recipes page, we use the already created RecipeController and the method index to show all recipes
+Route::get('/recipes', 'RecipeController@index');
 
-Route::get('/', function () {
-    return view('landingPage');
-});
-
-Route::get('/child', function () {
-    return view('child');
-});
-
-Route::get('/recipes', function () {
-    return view('recipes', [
-        'recipes' => App\Recipe::latest()->get()
-    ]);
-});
-
-Route::get('/recipes/{id}', function ($id) {
-    return view('recipeInfo', [
-        'recipe' => App\Recipe::find($id)
-    ]);
-});
+//{} those shows that the specific value is an input and should be past to the controller
+Route::get('/recipes/{id}', 'RecipeController@show');
