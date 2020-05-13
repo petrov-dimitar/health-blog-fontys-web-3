@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Recipe;
 use Illuminate\Http\Request;
 use App;
+
 class RecipeController extends Controller
 {
     /**
@@ -18,7 +19,6 @@ class RecipeController extends Controller
         return view('recipes', [
             'recipes' => App\Recipe::latest()->get()
         ]);
-        
     }
 
     /**
