@@ -283,3 +283,10 @@ a {
 .input {
     background-color: black !important;
 }
+
+.profile {
+    background: green;
+    padding: 12px 16px;
+    cursor: pointer;
+    margin: 10px;
+}

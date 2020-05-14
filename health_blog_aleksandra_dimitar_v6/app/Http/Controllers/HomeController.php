@@ -47,6 +47,6 @@ class HomeController extends Controller
 
         $user->save();
 
-        redirect('/user/profile' . $user->id);
+        return redirect('/user/profile');
     }
 }

@@ -17,7 +17,7 @@ class RecipeController extends Controller
     public function index()
     {
         return view('recipes', [
-            'recipes' => App\Recipe::latest()->get()
+            'recipes' => App\User::find(auth()->user()->id)->Recipes
         ]);
     }
 
@@ -28,7 +28,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('createRecipe');
     }
 
     /**
