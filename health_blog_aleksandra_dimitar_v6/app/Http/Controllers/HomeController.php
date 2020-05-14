@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
+use App\User;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -24,5 +27,26 @@ class HomeController extends Controller
     public function index()
     {
         return view('landingPage');
+    }
+
+    public function getProfile()
+    {
+        return view('profilePage');
+    }
+
+    public function getProfileEdit()
+    {
+        return view('editProfile');
+    }
+
+    public function updateProfile($id)
+    {
+        $user = User::find($id);
+
+        $user->name = request('name');
+
+        $user->save();
+
+        redirect('/user/profile' . $user->id);
     }
 }

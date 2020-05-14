@@ -22,11 +22,15 @@ Route::get('/recipes/{id}', 'RecipeController@show');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')
-->name('home')
-->middleware('auth');
+    ->name('home')
+    ->middleware('auth');
 
 Route::get('/home', 'HomeController@index')
-->name('home')
-->middleware('auth');
+    ->name('home')
+    ->middleware('auth');
 
+Route::get('/user/profile', 'HomeController@getProfile');
 
+Route::get('/user/profile/edit', 'HomeController@getProfileEdit');
+
+Route::put('/user/profile/edit/{id}', 'HomeController@updateProfile');

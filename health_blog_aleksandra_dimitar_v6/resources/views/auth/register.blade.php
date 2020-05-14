@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}" >
+</head>
+
 @extends('layouts.app')
 
 @section('content')
@@ -7,7 +11,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
+                <div class="card-body wrapper">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

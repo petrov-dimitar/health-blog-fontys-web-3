@@ -279,3 +279,7 @@ section {
 a {
     padding-right: 10px;
 }
+
+.input {
+    background-color: black !important;
+}
