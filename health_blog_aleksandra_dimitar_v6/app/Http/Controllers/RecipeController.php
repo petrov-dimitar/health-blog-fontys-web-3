@@ -39,7 +39,15 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recipe = new Recipe();
+
+        $recipe->recipe_name = $request->recipe_name;
+        $recipe->description = $request->description;
+        $recipe->user_id = auth()->user()->id;
+
+        $recipe->save();
+
+        return redirect('/recipes');
     }
 
     /**

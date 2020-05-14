@@ -6,10 +6,18 @@
 @section('app-layout')
     @parent
    <div class="wrapper">
-<input type="text" name="" id="" placeholder="Recipe Name">
-<textarea type="text" name="" id="" placeholder="Description"></textarea>
 
-<button>Create</button>
+    <form method="POST" action="/user/createRecipe">
+
+        @csrf
+        @method('POST')
+
+        <input type="text" name="recipe_name" id="recipe_name" placeholder="Recipe Name">
+        <textarea type="text" name="description" id="description" placeholder="Description"></textarea>
+        
+        <button>Create</button>
+    </form>
+
 
 
    </div>

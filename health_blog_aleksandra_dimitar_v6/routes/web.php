@@ -36,3 +36,5 @@ Route::get('/user/profile/edit', 'HomeController@getProfileEdit');
 Route::put('/user/profile/edit/{id}', 'HomeController@updateProfile');
 
 Route::get('/user/recipes/create', 'RecipeController@create');
+
+Route::post('/user/createRecipe', 'RecipeController@store');
