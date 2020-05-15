@@ -1,0 +1,98 @@
+.wrapper {
+    width: 90vw !important;
+    margin: 0 auto;
+    min-width: 400px;
+}
+
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.link_recipes {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 16px;
+    background-color: aquamarine;
+    margin: 16px;
+    border-radius: 16px;
+
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    text-decoration: none;
+    color: black;
+    background-color: lightgrey;
+
+}
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: 0.3s;
+    height: 250px;
+    width: 70vw;
+    margin: 30px auto;
+}
+
+/* On mouse-over, add a deeper shadow */
+.link_recipes:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {}
+
+
+h2 {
+    padding: 20px;
+    margin: 0px;
+}
+
+.recipe_toolbar_title {
+    background-color: whitesmoke;
+    border-bottom: 0.5px solid grey;
+}
+
+.toolbar_actions {
+    height: 64px;
+
+    width: 100%;
+    position: relative;
+
+}
+
+.toolbar_actions a {
+
+
+    margin: 0px;
+    bottom: 5px;
+
+    right: 20px;
+
+    background: #76b852;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8DC26F, #76b852);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8DC26F, #76b852);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+
+h1 {
+    margin: 0px;
+    padding: 16px;
+}
