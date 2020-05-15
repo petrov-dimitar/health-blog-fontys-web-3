@@ -69,9 +69,11 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipe $recipe)
+    public function edit($id)
     {
-        //
+        $recipe = App\Recipe::find($id);
+
+        return view('editRecipe', ['recipe' => $recipe]);
     }
 
     /**
@@ -81,9 +83,18 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(Request $request, $id)
     {
-        //
+        $recipe = App\Recipe::find($id);
+
+        $recipe->recipe_name = request('recipe_name');
+        $recipe->description = request('description');
+
+        $recipe->save();
+
+        return view('recipeInfo', [
+            'recipe' => App\Recipe::find($id)
+        ]);
     }
 
     /**

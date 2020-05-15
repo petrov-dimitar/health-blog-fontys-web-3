@@ -9,7 +9,7 @@
    <div class="wrapper">
 
     <div class="recipe_toolbar">
-        <h1>{{$recipe->id}} {{$recipe->recipe_name}}</h1>
+        <h1>{{$recipe->recipe_name}}</h1>
       
 
         <div class="action_buttons_wrapper">
@@ -22,13 +22,15 @@
         </div>
       
     </div>
-   
+  
        <div class="image_container">
         <img class="" src="" alt="image">
        </div>
      
+     <h2>General Information</h2>
+     <p>recipe_id: {{$recipe->id}} </p>
+     <h2>Description</h2>
    
-
    <p>{{$recipe->description}}</p>
    </div>
 @endsection

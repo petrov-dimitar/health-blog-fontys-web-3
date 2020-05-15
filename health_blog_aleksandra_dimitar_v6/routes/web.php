@@ -17,7 +17,7 @@
 Route::get('/recipes', 'RecipeController@index');
 
 //{} those shows that the specific value is an input and should be past to the controller
-Route::get('/recipes/{id}', 'RecipeController@show');
+
 
 Auth::routes();
 
@@ -37,8 +37,14 @@ Route::get('/user/profile/edit', 'HomeController@getProfileEdit');
 
 Route::put('/user/profile/edit/{id}', 'HomeController@updateProfile');
 
+Route::get('/recipes/{id}', 'RecipeController@show');
+
 Route::get('/user/recipes/create', 'RecipeController@create');
 
 Route::post('/user/createRecipe', 'RecipeController@store');
 
 Route::get('/user/recipes/delete/{id}', 'RecipeController@destroy');
+
+Route::get('/user/recipes/edit/{id}', 'RecipeController@edit');
+
+Route::put('/user/recipes/update/{id}', 'RecipeController@Update');
