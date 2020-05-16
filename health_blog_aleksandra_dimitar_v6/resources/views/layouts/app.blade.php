@@ -3,9 +3,9 @@
     <head>
         <title>App Name - @yield('title')</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/master.css') }}" >
-        <script src="{{ asset('js/components/toolbar.js')}}"></script>
+        {{-- <script src="../../js/components/toolbar.js"></script> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="{{ asset('js/components/app.js')}}"></script>
+        <script src="{{ asset('js/toolbar.js')}}"></script>
     </head>
     <body>
         <div class="toolbar_picture_wrapper">
@@ -40,7 +40,7 @@
                             @endif
                         @else
                            
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle " href="user/profile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class=" " href="user/profile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
  
@@ -67,15 +67,22 @@
         </div>
     </body>
    
+
+
       
-          <div class="footer">
+          <footer class="footer">
             
-            <div id="button"></div>
-          <div id="container">
+            <div id=""></div>
+          <div id="">
          
-          <div id="cont">
+          <div class="footer_text_wrapper">
+            <span class="text_left">
               
-          <div class="footer_center">
+                HealthyRecipes.com      
+                  
+         </span>
+              
+          <div class="text_right">
                  <h3><a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-twitter"></a>
                     <a href="#" class="fa fa-instagram"></a>
@@ -83,6 +90,6 @@
           </div>
           </div>
           </div>
-          </div>
+        </footer>
    
 </html>

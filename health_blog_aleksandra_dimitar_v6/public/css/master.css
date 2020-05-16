@@ -2,23 +2,18 @@ body {
     margin: 0px;
 }
 
-
-
 .toolbar {
     background: transparent;
     height: 72px;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpillsa.com%2Fwp-content%2Fuploads%2F2019%2F05%2FHealthy-lifestyle-tips.jpeg&f=1&nofb=1');
-
-
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpillsa.com%2Fwp-content%2Fuploads%2F2019%2F05%2FHealthy-lifestyle-tips.jpeg&f=1&nofb=1");
 }
 
 .toolbar a {
     text-decoration: none;
     color: white;
     opacity: 1;
-
-
 }
 
 .active {
@@ -40,8 +35,6 @@ body {
 .button_toolbar_wrapper {
     float: right;
     position: relative;
-
-
 }
 
 .button_toolbar {
@@ -54,8 +47,6 @@ body {
     font-size: 15px;
     cursor: pointer;
     letter-spacing: 2px;
-
-
 }
 
 .button_toolbar:hover {
@@ -71,9 +62,9 @@ body {
 
 /* Colors */
 
-$dk-blue: #1E83AE;
-$blue: #3D5B94;
-$light-blue: #3DACDD;
+$dk-blue: #1e83ae;
+$blue: #3d5b94;
+$light-blue: #3dacdd;
 $green: #6dcd9a;
 $social-size: 1.2em;
 $social-width: 20%;
@@ -90,60 +81,7 @@ body {
     background-color: #fff;
 }
 
-footer {
-    width: 100%;
-    display: inline-block;
-    margin: 2em 0;
-    height: 70px;
-    background-color: #999;
-
-    .copyright {
-        width: 50%;
-        float: left;
-
-        @media (max-width: 600px) {
-            width: 100%;
-        }
-
-        p {
-            padding-left: 10%;
-            color: white;
-            font-size: 0.7em;
-            line-height: 70px;
-            text-transform: capitalize;
-            letter-spacing: 1px;
-
-            @media (max-width: 600px) {
-                text-align: center;
-                padding: 0;
-            }
-        }
-    }
-
-    .social {
-        width: 50%;
-        float: right;
-
-        @media (max-width: 600px) {
-            width: 100%;
-        }
-
-        a {
-            float: left;
-            line-height: 70px;
-            text-decoration: none;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            @include transition(all, 0.3s);
-
-            &:hover {
-                background-color: #222;
-                @include transition(all, .3s);
-            }
-        }
-    }
-}
+footer {}
 
 .linked {
     background-color: $dk-blue;
@@ -169,101 +107,15 @@ footer {
     width: 40%;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300, 400);
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
     font-weight: 300;
-
-
 }
 
 section {
     text-align: center;
-}
-
-.footer #button {
-    width: 35px;
-    height: 35px;
-    border: #727172 12px solid;
-    border-radius: 35px;
-    margin: 0 auto;
-    position: relative;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
-
-.footer #button:hover {
-    width: 35px;
-    height: 35px;
-    border: #3A3A3A 12px solid;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    position: relative;
-}
-
-.footer {
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    height: 2em;
-    overflow: hidden;
-    margin: 0 auto;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    z-index: 999;
-}
-
-.footer:hover {
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    height: 10em;
-}
-
-.footer #container {
-    margin-top: 5px;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    top: 0;
-    left: 0;
-    background: #3A3A3A;
-}
-
-.footer #cont {
-    position: relative;
-    top: -45px;
-    right: 190px;
-    width: 150px;
-    height: auto;
-    margin: 0 auto;
-}
-
-.footer_center {
-    width: 500px;
-    float: left;
-    text-align: center;
-}
-
-.footer h3 {
-    font-family: 'Helvetica';
-    font-size: 30px;
-    font-weight: 100;
-    margin-top: 70px;
-    margin-left: 30px;
 }
 
 .fa {
@@ -289,4 +141,96 @@ a {
     padding: 12px 16px;
     cursor: pointer;
     margin: 10px;
+}
+
+.toolbar_scroll {
+    position: fixed;
+    background: white !important;
+    color: black !important;
+    width: 100%;
+    z-index: 10;
+}
+
+.toolbar_scroll a {
+    color: black !important;
+}
+
+.text_right {
+    text-align: right;
+    display: inline-block;
+
+}
+
+.text_right h3 {
+    display: inline-block;
+}
+
+.footer_text_wrapper {
+    width: 60%;
+    margin: 0px auto;
+    max-width: 1200px;
+    text-align: center;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0px auto;
+
+}
+
+.text_left {}
+
+.footer {}
+
+.footer {}
+
+
+/**
+ * Demo Styles
+ */
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.demo {
+    margin: 0 auto;
+    padding-top: 64px;
+    max-width: 640px;
+    width: 94%;
+}
+
+.demo h1 {
+    margin-top: 0;
+}
+
+/**
+   * Footer Styles
+   */
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 30px;
+    padding-bottom: 10px;
+
+    text-align: center;
 }

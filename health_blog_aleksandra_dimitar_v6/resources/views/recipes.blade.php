@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}" >
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 @extends('layouts.app')
 
@@ -7,7 +8,7 @@
     @parent
     <div class="toolbar_actions">
         <h1>Recipes</h1>
-        <a class="link_recipes" href="/user/recipes/create">Create New +</a>
+        <a class="link_recipes btn btn-primary" href="/user/recipes/create">Create New +</a>
     </div>
    <div class="wrapper">
 
@@ -15,19 +16,16 @@
 
       
 @foreach ($recipes as $recipe)
-<ul class="card">
-    <div class="recipe_toolbar_title">
-        <h2>{{$recipe->recipe_name}}</h2>
-    </div>
-    <span class="image_container">
-        <img src="" alt="image">
-    </span>
 
-<p>{{$recipe->description}}</p>
-    <li>
-    <a class="link_recipes" href="recipes/{{$recipe->id}}">Read Recipe</a>
-    </li>
-</ul>
+
+<div class="card" style="">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{$recipe->recipe_name}}</h5>
+      <p class="card-text">{{$recipe->description}}</p>
+      <a class="link_recipes btn btn-outline-info" href="recipes/{{$recipe->id}}">Read Recipe</a>
+    </div>
+  </div>
 
 @endforeach
     

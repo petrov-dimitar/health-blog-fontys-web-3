@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/recipeInfo.css') }}" >
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 
 @extends('layouts.app')
@@ -13,10 +14,10 @@
       
 
         <div class="action_buttons_wrapper">
-            <a class="" href="/user/recipes/edit/{{$recipe->id}}">
+            <a class="btn btn-outline-dark" href="/user/recipes/edit/{{$recipe->id}}">
                 EDIT
             </a>
-            <a class="delete" href="/user/recipes/delete/{{$recipe->id}}">
+            <a class=" btn btn-outline-danger" href="/user/recipes/delete/{{$recipe->id}}">
                 DELETE
             </a>
         </div>
