@@ -1,0 +1,40 @@
+.wrapper {
+    min-width: 400px;
+    width: 60vw;
+    max-width: 1200px;
+    margin: 0px auto;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    margin: 20px auto;
+}
+
+h1 {
+    margin: 0px;
+}
+
+.image_container {
+    height: 600px;
+}
+
+.recipe_toolbar {
+    width: 100%;
+    position: relative;
+}
+
+
+
+.delete {
+    background: red !important;
+}
+
+.action_buttons_wrapper {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+
+.action_buttons_wrapper a {
+    margin: 5px;
+}
