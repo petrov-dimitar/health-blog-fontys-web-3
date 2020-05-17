@@ -1,0 +1,31 @@
+.wrapper {
+    width: 30vw !important;
+    margin: 0 auto;
+    min-width: 400px;
+}
+
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+button {
+    background-color: darkblue;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 7%;
+
+}

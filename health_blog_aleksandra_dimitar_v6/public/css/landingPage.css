@@ -1,0 +1,15 @@
+.toolbar_picture_wrapper {
+    height: 85vh;
+    min-height: 600px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpillsa.com%2Fwp-content%2Fuploads%2F2019%2F05%2FHealthy-lifestyle-tips.jpeg&f=1&nofb=1");
+}
+
+.button_action {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.description_text {
+    margin: 30px auto;
+}
