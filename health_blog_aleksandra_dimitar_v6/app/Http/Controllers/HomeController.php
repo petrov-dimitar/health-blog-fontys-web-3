@@ -58,7 +58,7 @@ class HomeController extends Controller
 
         // // for save thumnail image
         // $thumbnailPath = 'root';
-        // $ImageUpload->resize(250, 125);
+        $ImageUpload->resize(250, 125);
         // $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
 
         // $photo = new Photo();
