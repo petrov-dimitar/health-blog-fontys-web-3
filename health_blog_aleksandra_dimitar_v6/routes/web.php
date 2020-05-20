@@ -48,3 +48,7 @@ Route::get('/user/recipes/delete/{id}', 'RecipeController@destroy');
 Route::get('/user/recipes/edit/{id}', 'RecipeController@edit');
 
 Route::put('/user/recipes/update/{id}', 'RecipeController@Update');
+
+//Photos
+Route::get('image', 'ImageController@index');
+Route::post('save-image', 'ImageController@save');
