@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use App\Photo;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
 
@@ -31,7 +32,7 @@ class HomeController extends Controller
 
     public function getProfile()
     {
-        return view('profilePage');
+        return view('profilePage', ['image' => Photo::latest()->first(['photo_name'])]);
     }
 
     public function getProfileEdit()

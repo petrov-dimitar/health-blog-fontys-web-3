@@ -27,11 +27,11 @@ class ImageController extends Controller
 
             // for save original image
             $ImageUpload = Image::make($files);
-            $originalPath = 'public/images/';
+            $originalPath = 'root';
             $ImageUpload->save($originalPath . time() . $files->getClientOriginalName());
 
             // for save thumnail image
-            $thumbnailPath = 'public/thumbnail/';
+            $thumbnailPath = 'root';
             $ImageUpload->resize(250, 125);
             $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
 

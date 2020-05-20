@@ -80,9 +80,11 @@ alt="">
      
        success:function(data){
      
-           $('#original').attr('src', 'public/images/'+ data.photo_name);
+           $('#original').attr('src', 'root'+ data.photo_name);
+
+           console.log('root'+ data.photo_name);
      
-           $('#thumbImg').attr('src', 'public/thumbnail/'+ data.photo_name);
+           $('#thumbImg').attr('src', 'root'+ data.photo_name);
      
        },
      
