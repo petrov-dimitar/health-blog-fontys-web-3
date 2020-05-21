@@ -51,15 +51,20 @@ class HomeController extends Controller
         // $files = $request->file('photo_name');
         $image_name = $request->file('photo_name');
 
+        $waterMarkUrl = public_path("watermark.png");
+
+        // dd($waterMarkUrl);
         // for save original image
         $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
         $originalPath = 'root';
         $ImageUpload->resize(500, 500);
+
+        $ImageUpload->insert($waterMarkUrl, 'bottom-left', 90, 10);
         $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
 
         // // for save thumnail image
         // $thumbnailPath = 'root';
-        
+
         // $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
 
         // $photo = new Photo();
