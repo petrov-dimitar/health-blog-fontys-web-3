@@ -17,7 +17,7 @@
         @csrf
         @method('PUT')
 
-        <textarea name="name">Name: {{auth()->user()-> name}}</textarea>
+        <textarea name="name">{{auth()->user()-> name}}</textarea>
 
         
         <div class="container">
@@ -33,7 +33,6 @@
             <div class="d-flex justify-content-center mt-3">
             <div class="btn btn-mdb-color btn-rounded float-left">
             <input type="file" name="photo_name" id="photo_name" required=""> <br>
-            <button type="submit" class="btn btn-secondary d-flex justify-content-center mt-3">submit</button>
             </div>
             </div>
             </div>

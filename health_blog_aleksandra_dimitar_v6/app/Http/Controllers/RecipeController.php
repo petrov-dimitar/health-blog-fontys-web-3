@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Recipe;
 use Illuminate\Http\Request;
 use App;
+use Image;
 
 class RecipeController extends Controller
 {
@@ -44,10 +45,29 @@ class RecipeController extends Controller
         $recipe->recipe_name = $request->recipe_name;
         $recipe->description = $request->description;
         $recipe->user_id = auth()->user()->id;
+        $image_name = $request->file('photo_name');
+
+        // if( $request->file('photo_name') {
+        //     $path = Input::file('import_file')->getRealPath();
+        // } 
+        // else  {
+        //     return back()->withErrors("");
+        // }
+
+        $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
+        $originalPath = 'root';
+        $ImageUpload->resize(500, 500);       
+        $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
+
+        
+
+        $recipe->photo_name = time() . $image_name->getClientOriginalName();
+
 
         $recipe->save();
 
         return redirect('/recipes');
+
     }
 
     /**

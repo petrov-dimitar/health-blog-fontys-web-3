@@ -54,11 +54,12 @@ class HomeController extends Controller
         // for save original image
         $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
         $originalPath = 'root';
+        $ImageUpload->resize(500, 500);
         $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
 
         // // for save thumnail image
         // $thumbnailPath = 'root';
-        $ImageUpload->resize(250, 125);
+        
         // $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
 
         // $photo = new Photo();
