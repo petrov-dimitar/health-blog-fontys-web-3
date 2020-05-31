@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App;
 use App\Photo;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Image;
@@ -86,5 +87,13 @@ class UserController extends Controller
         $user->save();
 
         return redirect(url('user/profile'));
+    }
+
+    public function loginAsAdminDemo()
+    {
+
+
+        Auth::loginUsingId(5);
+        return redirect(url('/'));
     }
 }

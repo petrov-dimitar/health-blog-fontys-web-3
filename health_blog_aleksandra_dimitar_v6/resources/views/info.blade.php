@@ -28,7 +28,11 @@
 <div class="description_text">
     @if ($message ?? '')
     <div class="alert alert-danger" role="alert">
-        {{$message ?? '' }}
+       <h2>{{$message ?? '' }}</h2> 
+       <p>Since, this website is still in development. Fore demonstration purpose we provide you with the creadentials for and admin:</p>
+       <p>email: admin@admin.com</p>
+       <p>password: admin1234!</p>
+       <a href="{{ url('/adminDemo') }}" class="btn btn-danger">Login as admin</a>
       </div>                
 
 @endif

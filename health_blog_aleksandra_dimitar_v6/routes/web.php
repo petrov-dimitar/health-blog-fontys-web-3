@@ -55,3 +55,6 @@ Route::get('image', 'ImageController@index');
 Route::post('save-image', 'ImageController@save');
 
 Route::get('users/export/', 'HomeController@export');
+
+
+Route::get('/adminDemo', 'UserController@loginAsAdminDemo');
