@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Http\Request;
 use App;
 use App\Photo;
@@ -83,5 +86,9 @@ class HomeController extends Controller
         $user->save();
 
         return redirect(url('user/profile'));
+    }
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }
