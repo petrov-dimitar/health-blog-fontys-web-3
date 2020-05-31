@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App;
 use App\Photo;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Image;
 
@@ -21,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -34,61 +35,22 @@ class HomeController extends Controller
         return view('landingPage');
     }
 
-    public function getProfile()
-    {
-        return view('profilePage', ['image' => Photo::latest()->first(['photo_name'])]);
-    }
-
-    public function getProfileEdit()
-    {
-        return view('editProfile');
-    }
-
-    public function updateProfile(Request $request, $id)
-    {
-        $user = User::find($id);
-
-        //---
-
-        // $img = Image::make($request->file('photo_name')->getRealPath());
-        // $files = $request->file('photo_name');
-        $image_name = $request->file('photo_name');
-
-        $waterMarkUrl = public_path("watermark.png");
-
-        // dd($waterMarkUrl);
-        // for save original image
-        $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
-        $originalPath = 'root';
-        $ImageUpload->resize(500, 500);
-
-        $ImageUpload->insert($waterMarkUrl, 'bottom-left', 90, 10);
-        $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
-
-        // // for save thumnail image
-        // $thumbnailPath = 'root';
-
-        // $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
-
-        // $photo = new Photo();
-        // $photo->photo_name = time() . $files->getClientOriginalName();
-        // $photo->save();
-
-        $user->photo_name = time() . $image_name->getClientOriginalName();
 
 
 
-        //---
 
-
-        $user->name = request('name');
-
-        $user->save();
-
-        return redirect(url('user/profile'));
-    }
     public function export()
     {
-        return Excel::download(new UsersExport, 'users.xlsx');
+        if (Gate::allows('export_users')) {
+            // The current user can edit settings
+            return Excel::download(new UsersExport, 'users.xlsx');
+        } else {
+            return view('info', ['message' => "You need to login as an admin first"]);
+        }
+    }
+
+    public function getInfoPage()
+    {
+        return view('info');
     }
 }
