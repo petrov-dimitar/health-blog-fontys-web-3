@@ -25,7 +25,9 @@
     </div>
   
        <div class="image_container">
-        <img class="" src="" alt="image">
+    <img class="avatar" src='{{'http://localhost:8000/root' . $recipe->photo_name}}' alt="Actual Photo">
+     <div class="card-body">
+    </div>
        </div>
      
      <h2>General Information</h2>

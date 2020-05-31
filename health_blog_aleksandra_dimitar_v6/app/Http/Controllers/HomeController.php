@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use App\Photo;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
+use Image;
 
 class HomeController extends Controller
 {
@@ -31,7 +33,7 @@ class HomeController extends Controller
 
     public function getProfile()
     {
-        return view('profilePage');
+        return view('profilePage', ['image' => Photo::latest()->first(['photo_name'])]);
     }
 
     public function getProfileEdit()
@@ -39,14 +41,42 @@ class HomeController extends Controller
         return view('editProfile');
     }
 
-    public function updateProfile($id)
+    public function updateProfile(Request $request, $id)
     {
         $user = User::find($id);
+
+        //---
+
+        // $img = Image::make($request->file('photo_name')->getRealPath());
+        // $files = $request->file('photo_name');
+        $image_name = $request->file('photo_name');
+
+        // for save original image
+        $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
+        $originalPath = 'root';
+        $ImageUpload->resize(500, 500);
+        $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
+
+        // // for save thumnail image
+        // $thumbnailPath = 'root';
+        
+        // $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
+
+        // $photo = new Photo();
+        // $photo->photo_name = time() . $files->getClientOriginalName();
+        // $photo->save();
+
+        $user->photo_name = time() . $image_name->getClientOriginalName();
+
+
+
+        //---
+
 
         $user->name = request('name');
 
         $user->save();
 
-        return redirect('/user/profile');
+        return redirect(url('user/profile'));
     }
 }
