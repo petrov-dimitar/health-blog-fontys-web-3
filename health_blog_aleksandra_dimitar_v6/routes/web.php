@@ -19,6 +19,7 @@ Route::get('/recipes', 'RecipeController@index');
 //{} those shows that the specific value is an input and should be past to the controller
 
 
+Route::get('info', 'HomeController@getInfoPage');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')
@@ -29,13 +30,13 @@ Route::get('/home', 'HomeController@index')
     ->name('home')
     ->middleware('auth');
 
-Route::get('/user/profile', 'HomeController@getProfile');
+Route::get('/user/profile', 'UserController@getProfile');
 
 
 
-Route::get('/user/profile/edit', 'HomeController@getProfileEdit');
+Route::get('/user/profile/edit', 'UserController@getProfileEdit');
 
-Route::put('/user/profile/edit/{id}', 'HomeController@updateProfile');
+Route::put('/user/profile/edit/{id}', 'UserController@updateProfile');
 
 Route::get('/recipes/{id}', 'RecipeController@show');
 
@@ -52,3 +53,8 @@ Route::put('/user/recipes/update/{id}', 'RecipeController@Update');
 //Photos
 Route::get('image', 'ImageController@index');
 Route::post('save-image', 'ImageController@save');
+
+Route::get('users/export/', 'HomeController@export');
+
+
+Route::get('/adminDemo', 'UserController@loginAsAdminDemo');
