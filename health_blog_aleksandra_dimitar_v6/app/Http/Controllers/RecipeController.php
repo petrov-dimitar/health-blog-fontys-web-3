@@ -49,7 +49,7 @@ class RecipeController extends Controller
 
         $recipe->recipe_name = $request->recipe_name;
         $recipe->description = $request->description;
-        $recipe->user_id = auth()->user()->id;
+        $recipe->user_id = $request->user()->id;
         $image_name = $request->file('photo_name');
 
         // if( $request->file('photo_name') {
@@ -113,10 +113,10 @@ class RecipeController extends Controller
 
         $recipe->recipe_name = request('recipe_name');
         $recipe->description = request('description');
-        
+
         $image_name = $request->file('photo_name');
 
-        
+
         $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
         $originalPath = 'root';
         $ImageUpload->resize(500, 500);
