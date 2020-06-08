@@ -27,6 +27,36 @@ class UserController extends Controller
     }
 
     /**
+ * API Register
+ *
+ * @param Request $request
+ * @return \Illuminate\Http\JsonResponse
+ */ 
+    public function registerAPI(Request $request)
+    {
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ];
+    
+        $input     = $request->only('name', 'email','password');
+        //$validator = Validator::make($input, $rules);
+    
+        //if ($validator->fails()) {
+        //    return response()->json(['success' => false, 'error' => $validator->messages()]);
+        //}
+        $name = $request->name;
+        $email    = $request->email;
+        $password = $request->password;
+        $user     = User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password), 'api_token' => str_random(80)]);
+    
+       return response()->json(['success' => $user, //'error' => $validator->messages()
+       ]);
+
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
