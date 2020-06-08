@@ -20,6 +20,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth')->put('/user/update', function (Request $request, $id)
+{
+    $user = App\User::where('api_token', '=', $request->api_token);
+
+    $user->name = request('name');
+
+    $user->save();
+
+    return response()->json(['user' => $user], 200);
+});
+
 Route::middleware('auth:api')->get('/recipes', function (Request $request) {
 
     $user = App\User::where('api_token', '=', $request->api_token);
@@ -54,4 +65,10 @@ Route::get('users', function () {
     // If the Content-Type and Accept headers are set to 'application/json', 
     // this will return a JSON structure. This will be cleaned up later.
     return User::all();
+});
+
+Route::get('recipes', function () {
+    // If the Content-Type and Accept headers are set to 'application/json', 
+    // this will return a JSON structure. This will be cleaned up later.
+    return Recipe::all();
 });
