@@ -75,7 +75,29 @@ Route::middleware('auth:api')->get('/recipes/user', function (Request $request) 
     }
 });
  
-Route::middleware('auth:api')->post('/user/recipes/{id}', 'RecipeController@Update');
+//Route::middleware('auth:api')->post('/user/recipes/{id}', 'RecipeController@Update');
+
+Route::middleware('auth:api')->post('/user/recipes/create', function (Request $request) {
+    $user = App\User::where('api_token', '=', $request->api_token)->first();
+    $recipe = new Recipe();
+
+    //return response()->json(['user' => $user], 200);
+
+    $recipe->recipe_name = $request->recipe_name;
+    $recipe->description = $request->description;
+    $recipe->user_id = $user->id;
+    $recipe->save();
+
+    return response()->json(['recipe created' => $recipe], 200);
+});
+
+Route::middleware('auth:api')->put('/user/recipe/delete', function (Request $request) {
+     
+    $recipe = App\Recipe::find($request->id);
+    $recipe->delete();
+ 
+    return response()->json(['recipe deleted' => $recipe], 200);
+});
  
 Route::post('login', function (Request $request) {
     // If the Content-Type and Accept headers are set to 'application/json', 
