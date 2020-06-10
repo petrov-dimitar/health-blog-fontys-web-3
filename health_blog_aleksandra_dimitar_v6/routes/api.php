@@ -49,6 +49,17 @@ Route::middleware('auth:api')->put('/user/update', function (Request $request) {
     return response()->json(['user' => $user], 200);
 });
  
+Route::middleware('auth:api')->put('/user/delete', function (Request $request) {
+    $user = App\User::where('api_token', '=', $request->api_token)->first();
+     //return response()->json(['user' => request('name')], 200);
+    //$user->name = request('name');
+    // $user = User::find($user->get()->id);
+    $user->delete();
+ 
+    return response()->json(['user deleted' => $user], 200);
+});
+ 
+
 Route::middleware('auth:api')->get('/recipes/user', function (Request $request) {
  
     $user = App\User::where('api_token', '=', $request->api_token);

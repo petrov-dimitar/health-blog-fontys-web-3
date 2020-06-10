@@ -15,7 +15,7 @@
                 <div class="link_wrapper">
                     <a href="{{ url('/') }}"> Home </a>
                     <a href="{{ url('/recipes') }}"> Recipes </a>
-                    <a href="{{ url('/shop') }}"> Shop </a>
+                    <!-- <a href="{{ url('/shop') }}"> Shop </a> -->
                     <a href="{{ url('/info') }}"> Info </a>
 
                     <div class="button_toolbar_wrapper">
