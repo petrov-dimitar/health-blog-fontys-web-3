@@ -34,6 +34,24 @@ Route::post('register', function (Request $request) {
  
     return response()->json(['success' => $user]);
 });
+
+Route::post('login', function (Request $request) {
+    // If the Content-Type and Accept headers are set to 'application/json', 
+    // this will return a JSON structure. This will be cleaned up later.
+    $credentials = $request->only('email', 'password');
+    if (Auth::attempt($credentials)) {
+ 
+        return response()->json(['user' => Auth::user()], 200);
+    } else {
+        return  response()->json(['error' => 'invalid'], 401);
+    };
+});
+ 
+Route::get('users', function () {
+    // If the Content-Type and Accept headers are set to 'application/json', 
+    // this will return a JSON structure. This will be cleaned up later.
+    return User::all();
+});
  
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -62,11 +80,12 @@ Route::middleware('auth:api')->put('/user/delete', function (Request $request) {
 
 Route::middleware('auth:api')->get('/recipes/user', function (Request $request) {
  
-    $user = App\User::where('api_token', '=', $request->api_token);
-    // return response()->json(['user' => $user], 200);
+    //$user = App\User::where('api_token', '=', $request->api_token)->first();
+    $user = $request->user();
+    //return response()->json(['user' => $user], 200);
     if ($user) {
         if ($user->firstOrFail()->Recipes()->count() > 0) {
-            return response()->json(['user' => $user->firstOrFail()->Recipes()->get()], 200);
+            return response()->json(['user' => $user->Recipes()->get()], 200);
         } else {
             return  response()->json(['error' => 'No Recipes Yet'], 200);
         };
@@ -79,16 +98,32 @@ Route::middleware('auth:api')->get('/recipes/user', function (Request $request) 
 
 Route::middleware('auth:api')->post('/user/recipes/create', function (Request $request) {
     $user = App\User::where('api_token', '=', $request->api_token)->first();
-    $recipe = new Recipe();
+    $recipe = new Recipe();    
 
-    //return response()->json(['user' => $user], 200);
+    //return response()->json(['recipe' => $recipe], 200);
 
     $recipe->recipe_name = $request->recipe_name;
     $recipe->description = $request->description;
     $recipe->user_id = $user->id;
+
     $recipe->save();
 
     return response()->json(['recipe created' => $recipe], 200);
+});
+
+Route::middleware('auth:api')->put('/recipe/update', function (Request $request) {
+    
+    $recipe = App\Recipe::find($request->recipe_id);
+    
+
+    //return response()->json(['recipe' => $recipe], 200);
+    $recipe->id = $request->recipe_id;
+    $recipe->recipe_name = $request->recipe_name;
+    $recipe->description = $request->description;
+    // $user = User::find($user->get()->id);
+    $recipe->save();
+ 
+    return response()->json(['recipe' => $recipe], 200);
 });
 
 Route::middleware('auth:api')->put('/user/recipe/delete', function (Request $request) {
@@ -97,24 +132,6 @@ Route::middleware('auth:api')->put('/user/recipe/delete', function (Request $req
     $recipe->delete();
  
     return response()->json(['recipe deleted' => $recipe], 200);
-});
- 
-Route::post('login', function (Request $request) {
-    // If the Content-Type and Accept headers are set to 'application/json', 
-    // this will return a JSON structure. This will be cleaned up later.
-    $credentials = $request->only('email', 'password');
-    if (Auth::attempt($credentials)) {
- 
-        return response()->json(['user' => Auth::user()], 200);
-    } else {
-        return  response()->json(['error' => 'invalid'], 401);
-    };
-});
- 
-Route::get('users', function () {
-    // If the Content-Type and Accept headers are set to 'application/json', 
-    // this will return a JSON structure. This will be cleaned up later.
-    return User::all();
 });
  
 Route::get('recipes', function () {
