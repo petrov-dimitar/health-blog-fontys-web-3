@@ -87,3 +87,7 @@ h1 {
     margin: 0px;
     padding: 16px;
 }
+
+.avatar {
+    object-fit: scale-down
+}
