@@ -75,7 +75,51 @@ PUSHER_APP_SECRET=
 | Authorization  | Authorization was a high priority for us and is present where needed. We have made use of two middlewares auth and auth:api (which works with and api_token). We did not make use of policies or are not aware. We have made use of 1 guard , which can be found inside app/Providers/AuthService provider.php and used inside UserController.php                                                                       |
 | Migrations     | All required migration functionalities are present as far as we are conserned. Those migrations could be found under database/migrations                                                                                                                                                                                                                                                                                |
 | Seeds          | Seeding or populating db with data is present. We have made use of faker factories for or Recipes and User Models                                                                                                                                                                                                                                                                                                       |
-
+## Useful info
+### Route list
++--------+----------+--------------------------+------------------+------------------------------------------------------------------------+--------------+
+| Domain | Method   | URI                      | Name             | Action                                                                 | Middleware   |
++--------+----------+--------------------------+------------------+------------------------------------------------------------------------+--------------+
+|        | GET|HEAD | /                        | home             | App\Http\Controllers\HomeController@index                              | web,auth     |
+|        | GET|HEAD | adminDemo                |                  | App\Http\Controllers\UserController@loginAsAdminDemo                   | web,auth     |
+|        | POST     | api/login                |                  | Closure                                                                | api          |
+|        | PUT      | api/recipe/update        |                  | Closure                                                                | api,auth:api |
+|        | GET|HEAD | api/recipes              |                  | Closure                                                                | api          |
+|        | GET|HEAD | api/recipes/user         |                  | Closure                                                                | api,auth:api |
+|        | POST     | api/register             |                  | Closure                                                                | api          |
+|        | GET|HEAD | api/user                 |                  | Closure                                                                | api,auth:api |
+|        | PUT      | api/user/delete          |                  | Closure                                                                | api,auth:api |
+|        | PUT      | api/user/recipe/delete   |                  | Closure                                                                | api,auth:api |
+|        | POST     | api/user/recipes/create  |                  | Closure                                                                | api,auth:api |
+|        | PUT      | api/user/update          |                  | Closure                                                                | api,auth:api |
+|        | GET|HEAD | api/users                |                  | Closure                                                                | api          |
+|        | GET|HEAD | home                     | home             | App\Http\Controllers\HomeController@index                              | web,auth     |
+|        | GET|HEAD | image                    |                  | App\Http\Controllers\ImageController@index                             | web          |
+|        | GET|HEAD | info                     |                  | App\Http\Controllers\HomeController@getInfoPage                        | web          |
+|        | GET|HEAD | login                    | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest    |
+|        | POST     | login                    |                  | App\Http\Controllers\Auth\LoginController@login                        | web,guest    |
+|        | POST     | logout                   | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web          |
+|        | GET|HEAD | password/confirm         | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web,auth     |
+|        | POST     | password/confirm         |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web,auth     |
+|        | POST     | password/email           | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web          |
+|        | POST     | password/reset           | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web          |
+|        | GET|HEAD | password/reset           | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web          |
+|        | GET|HEAD | password/reset/{token}   | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web          |
+|        | GET|HEAD | recipes                  |                  | App\Http\Controllers\RecipeController@index                            | web,auth     |
+|        | GET|HEAD | recipes/{id}             |                  | App\Http\Controllers\RecipeController@show                             | web,auth     |
+|        | POST     | register                 |                  | App\Http\Controllers\Auth\RegisterController@register                  | web,guest    |
+|        | GET|HEAD | register                 | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest    |
+|        | POST     | save-image               |                  | App\Http\Controllers\ImageController@save                              | web          |
+|        | POST     | user/createRecipe        |                  | App\Http\Controllers\RecipeController@store                            | web,auth     |
+|        | GET|HEAD | user/profile             |                  | App\Http\Controllers\UserController@getProfile                         | web,auth     |
+|        | GET|HEAD | user/profile/edit        |                  | App\Http\Controllers\UserController@getProfileEdit                     | web,auth     |
+|        | PUT      | user/profile/edit/{id}   |                  | App\Http\Controllers\UserController@updateProfile                      | web,auth     |
+|        | GET|HEAD | user/recipes/create      |                  | App\Http\Controllers\RecipeController@create                           | web,auth     |
+|        | GET|HEAD | user/recipes/delete/{id} |                  | App\Http\Controllers\RecipeController@destroy                          | web,auth     |
+|        | GET|HEAD | user/recipes/edit/{id}   |                  | App\Http\Controllers\RecipeController@edit                             | web,auth     |
+|        | PUT      | user/recipes/update/{id} |                  | App\Http\Controllers\RecipeController@Update                           | web,auth     |
+|        | GET|HEAD | users/export             |                  | App\Http\Controllers\HomeController@export                             | web,auth     |
++--------+----------+--------------------------+------------------+------------------------------------------------------------------------+--------------+
 ## Design
 
 #### Mock-ups (From protoype)
