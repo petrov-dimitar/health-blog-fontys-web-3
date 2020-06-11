@@ -18,6 +18,7 @@ class Recipes extends Migration
             $table->string('recipe_name');
             $table->string('ingredients_list')->nullable();
             $table->string('description')->nullable();
+            $table->string('photo_name')->nullable();
             $table->timestamps();
 
             $table->unsignedInteger('user_id')->nullable();

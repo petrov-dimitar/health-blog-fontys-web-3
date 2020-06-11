@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Recipe;
 use Illuminate\Http\Request;
 use App;
+use Image;
 
 class RecipeController extends Controller
 {
@@ -14,7 +15,12 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
+
     {
         return view('recipes', [
             'recipes' => App\User::find(auth()->user()->id)->Recipes
@@ -43,7 +49,25 @@ class RecipeController extends Controller
 
         $recipe->recipe_name = $request->recipe_name;
         $recipe->description = $request->description;
-        $recipe->user_id = auth()->user()->id;
+        $recipe->user_id = $request->user()->id;
+        $image_name = $request->file('photo_name');
+
+        // if( $request->file('photo_name') {
+        //     $path = Input::file('import_file')->getRealPath();
+        // } 
+        // else  {
+        //     return back()->withErrors("");
+        // }
+
+        $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
+        $originalPath = 'root';
+        $ImageUpload->resize(500, 500);
+        $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
+
+
+
+        $recipe->photo_name = time() . $image_name->getClientOriginalName();
+
 
         $recipe->save();
 
@@ -89,6 +113,16 @@ class RecipeController extends Controller
 
         $recipe->recipe_name = request('recipe_name');
         $recipe->description = request('description');
+
+        $image_name = $request->file('photo_name');
+
+
+        $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
+        $originalPath = 'root';
+        $ImageUpload->resize(500, 500);
+        $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
+
+        $recipe->photo_name = time() . $image_name->getClientOriginalName();
 
         $recipe->save();
 

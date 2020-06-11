@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Http\Request;
 use App;
+use App\Photo;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
+use Image;
 
 class HomeController extends Controller
 {
@@ -16,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -29,24 +35,22 @@ class HomeController extends Controller
         return view('landingPage');
     }
 
-    public function getProfile()
+
+
+
+
+    public function export()
     {
-        return view('profilePage');
+        if (Gate::allows('export_users')) {
+            // The current user can edit settings
+            return Excel::download(new UsersExport, 'users.xlsx');
+        } else {
+            return view('info', ['message' => "You need to login as an admin first"]);
+        }
     }
 
-    public function getProfileEdit()
+    public function getInfoPage()
     {
-        return view('editProfile');
-    }
-
-    public function updateProfile($id)
-    {
-        $user = User::find($id);
-
-        $user->name = request('name');
-
-        $user->save();
-
-        return redirect('/user/profile');
+        return view('info');
     }
 }

@@ -14,11 +14,12 @@
 //Route::get('/', 'HomeController@GetHomePage');
 
 //in the recipes page, we use the already created RecipeController and the method index to show all recipes
-Route::get('/recipes', 'RecipeController@index');
+Route::get('/recipes', 'RecipeController@index')->middleware('auth');
 
 //{} those shows that the specific value is an input and should be past to the controller
 
 
+Route::get('info', 'HomeController@getInfoPage');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')
@@ -29,22 +30,31 @@ Route::get('/home', 'HomeController@index')
     ->name('home')
     ->middleware('auth');
 
-Route::get('/user/profile', 'HomeController@getProfile');
+Route::get('/user/profile', 'UserController@getProfile')->middleware('auth');;
 
 
 
-Route::get('/user/profile/edit', 'HomeController@getProfileEdit');
+Route::get('/user/profile/edit', 'UserController@getProfileEdit')->middleware('auth');
 
-Route::put('/user/profile/edit/{id}', 'HomeController@updateProfile');
+Route::put('/user/profile/edit/{id}', 'UserController@updateProfile')->middleware('auth');
 
-Route::get('/recipes/{id}', 'RecipeController@show');
+Route::get('/recipes/{id}', 'RecipeController@show')->middleware('auth');
 
-Route::get('/user/recipes/create', 'RecipeController@create');
+Route::get('/user/recipes/create', 'RecipeController@create')->middleware('auth');
 
-Route::post('/user/createRecipe', 'RecipeController@store');
+Route::post('/user/createRecipe', 'RecipeController@store')->middleware('auth');
 
-Route::get('/user/recipes/delete/{id}', 'RecipeController@destroy');
+Route::get('/user/recipes/delete/{id}', 'RecipeController@destroy')->middleware('auth');
 
-Route::get('/user/recipes/edit/{id}', 'RecipeController@edit');
+Route::get('/user/recipes/edit/{id}', 'RecipeController@edit')->middleware('auth');
 
-Route::put('/user/recipes/update/{id}', 'RecipeController@Update');
+Route::put('/user/recipes/update/{id}', 'RecipeController@Update')->middleware('auth');
+
+//Photos
+Route::get('image', 'ImageController@index');
+Route::post('save-image', 'ImageController@save');
+
+Route::get('users/export/', 'HomeController@export')->middleware('auth');;
+
+
+Route::get('/adminDemo', 'UserController@loginAsAdminDemo');

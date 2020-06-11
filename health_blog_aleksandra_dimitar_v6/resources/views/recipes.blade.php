@@ -19,7 +19,7 @@
 
 
 <div class="card" style="">
-    <img class="card-img-top" src="..." alt="Card image cap">
+<img class="avatar" src='{{'http://localhost:8000/root' . $recipe->photo_name}}' alt="Actual Photo">
     <div class="card-body">
       <h5 class="card-title">{{$recipe->recipe_name}}</h5>
       <p class="card-text">{{$recipe->description}}</p>
