@@ -27,11 +27,11 @@ class UserController extends Controller
     }
 
     /**
- * API Register
- *
- * @param Request $request
- * @return \Illuminate\Http\JsonResponse
- */ 
+     * API Register
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function registerAPI(Request $request)
     {
         $rules = [
@@ -39,10 +39,10 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
-    
-        $input     = $request->only('name', 'email','password');
+
+        $input     = $request->only('name', 'email', 'password');
         //$validator = Validator::make($input, $rules);
-    
+
         //if ($validator->fails()) {
         //    return response()->json(['success' => false, 'error' => $validator->messages()]);
         //}
@@ -50,10 +50,9 @@ class UserController extends Controller
         $email    = $request->email;
         $password = $request->password;
         $user     = User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password), 'api_token' => str_random(80)]);
-    
-       return response()->json(['success' => $user, //'error' => $validator->messages()
-       ]);
 
+        return response()->json(['success' => $user, //'error' => $validator->messages()
+        ]);
     }
 
     /**
@@ -80,16 +79,10 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        //---
-
-        // $img = Image::make($request->file('photo_name')->getRealPath());
-        // $files = $request->file('photo_name');
         $image_name = $request->file('photo_name');
 
         $waterMarkUrl = public_path("watermark.png");
 
-        // dd($waterMarkUrl);
-        // for save original image
         $ImageUpload = Image::make($request->file('photo_name')->getRealPath());
         $originalPath = 'root';
         $ImageUpload->resize(500, 500);
@@ -97,20 +90,8 @@ class UserController extends Controller
         $ImageUpload->insert($waterMarkUrl, 'bottom-left', 90, 10);
         $ImageUpload->save($originalPath . time() . $image_name->getClientOriginalName());
 
-        // // for save thumnail image
-        // $thumbnailPath = 'root';
-
-        // $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
-
-        // $photo = new Photo();
-        // $photo->photo_name = time() . $files->getClientOriginalName();
-        // $photo->save();
 
         $user->photo_name = time() . $image_name->getClientOriginalName();
-
-
-
-        //---
 
 
         $user->name = request('name');
@@ -124,7 +105,7 @@ class UserController extends Controller
     {
 
 
-        Auth::loginUsingId(5);
+        Auth::loginUsingId(4);
         return redirect(url('/'));
     }
 }

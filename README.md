@@ -58,10 +58,11 @@ MAIL_ENCRYPTION=null
 PUSHER_APP_ID=
 PUSHER_APP_KEY=
 PUSHER_APP_SECRET=
+
 5. Connect to CISCO (Fontys Hera Server)
 6. Run php artisan migrate:fresh
-7. Optionally you could populate with fake data using User and Faker factories
-8 Finally, run php artisan serve
+7. Optionally you could populate with fake data using User and Recipes Faker factories
+8. Finally, run php artisan serve
 
 * For testing the public api, it is adviced to use some software such as POSTMAN to generate requests
 ## Course Checklist (Our Remarks)
